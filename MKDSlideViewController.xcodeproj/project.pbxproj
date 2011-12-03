@@ -1,0 +1,293 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		DA953C65148AD3700075A1E2 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DA953C64148AD3700075A1E2 /* UIKit.framework */; };
+		DA953C67148AD3700075A1E2 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DA953C66148AD3700075A1E2 /* Foundation.framework */; };
+		DA953C69148AD3700075A1E2 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DA953C68148AD3700075A1E2 /* CoreGraphics.framework */; };
+		DA953C6F148AD3700075A1E2 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = DA953C6D148AD3700075A1E2 /* InfoPlist.strings */; };
+		DA953C71148AD3700075A1E2 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = DA953C70148AD3700075A1E2 /* main.m */; };
+		DA953C75148AD3700075A1E2 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = DA953C74148AD3700075A1E2 /* AppDelegate.m */; };
+		DA953C78148AD3700075A1E2 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DA953C77148AD3700075A1E2 /* ViewController.m */; };
+		DA953C7B148AD3700075A1E2 /* ViewController_iPhone.xib in Resources */ = {isa = PBXBuildFile; fileRef = DA953C79148AD3700075A1E2 /* ViewController_iPhone.xib */; };
+		DA953C7E148AD3700075A1E2 /* ViewController_iPad.xib in Resources */ = {isa = PBXBuildFile; fileRef = DA953C7C148AD3700075A1E2 /* ViewController_iPad.xib */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		DA953C60148AD3700075A1E2 /* MKDSlideViewController.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MKDSlideViewController.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		DA953C64148AD3700075A1E2 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		DA953C66148AD3700075A1E2 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		DA953C68148AD3700075A1E2 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		DA953C6C148AD3700075A1E2 /* MKDSlideViewController-Info.plist */ = {isa = PBXFileReference; path = "MKDSlideViewController-Info.plist"; sourceTree = "<group>"; };
+		DA953C6E148AD3700075A1E2 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		DA953C70148AD3700075A1E2 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		DA953C72148AD3700075A1E2 /* MKDSlideViewController-Prefix.pch */ = {isa = PBXFileReference; path = "MKDSlideViewController-Prefix.pch"; sourceTree = "<group>"; };
+		DA953C73148AD3700075A1E2 /* AppDelegate.h */ = {isa = PBXFileReference; path = AppDelegate.h; sourceTree = "<group>"; };
+		DA953C74148AD3700075A1E2 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		DA953C76148AD3700075A1E2 /* ViewController.h */ = {isa = PBXFileReference; path = ViewController.h; sourceTree = "<group>"; };
+		DA953C77148AD3700075A1E2 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		DA953C7A148AD3700075A1E2 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/ViewController_iPhone.xib; sourceTree = "<group>"; };
+		DA953C7D148AD3700075A1E2 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/ViewController_iPad.xib; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		DA953C5D148AD3700075A1E2 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DA953C65148AD3700075A1E2 /* UIKit.framework in Frameworks */,
+				DA953C67148AD3700075A1E2 /* Foundation.framework in Frameworks */,
+				DA953C69148AD3700075A1E2 /* CoreGraphics.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		DA953C55148AD36F0075A1E2 = {
+			isa = PBXGroup;
+			children = (
+				DA953C6A148AD3700075A1E2 /* MKDSlideViewController */,
+				DA953C63148AD3700075A1E2 /* Frameworks */,
+				DA953C61148AD3700075A1E2 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		DA953C61148AD3700075A1E2 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				DA953C60148AD3700075A1E2 /* MKDSlideViewController.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		DA953C63148AD3700075A1E2 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				DA953C64148AD3700075A1E2 /* UIKit.framework */,
+				DA953C66148AD3700075A1E2 /* Foundation.framework */,
+				DA953C68148AD3700075A1E2 /* CoreGraphics.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		DA953C6A148AD3700075A1E2 /* MKDSlideViewController */ = {
+			isa = PBXGroup;
+			children = (
+				DA953C73148AD3700075A1E2 /* AppDelegate.h */,
+				DA953C74148AD3700075A1E2 /* AppDelegate.m */,
+				DA953C76148AD3700075A1E2 /* ViewController.h */,
+				DA953C77148AD3700075A1E2 /* ViewController.m */,
+				DA953C79148AD3700075A1E2 /* ViewController_iPhone.xib */,
+				DA953C7C148AD3700075A1E2 /* ViewController_iPad.xib */,
+				DA953C6B148AD3700075A1E2 /* Supporting Files */,
+			);
+			path = MKDSlideViewController;
+			sourceTree = "<group>";
+		};
+		DA953C6B148AD3700075A1E2 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				DA953C6C148AD3700075A1E2 /* MKDSlideViewController-Info.plist */,
+				DA953C6D148AD3700075A1E2 /* InfoPlist.strings */,
+				DA953C70148AD3700075A1E2 /* main.m */,
+				DA953C72148AD3700075A1E2 /* MKDSlideViewController-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		DA953C5F148AD3700075A1E2 /* MKDSlideViewController */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = DA953C81148AD3700075A1E2 /* Build configuration list for PBXNativeTarget "MKDSlideViewController" */;
+			buildPhases = (
+				DA953C5C148AD3700075A1E2 /* Sources */,
+				DA953C5D148AD3700075A1E2 /* Frameworks */,
+				DA953C5E148AD3700075A1E2 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = MKDSlideViewController;
+			productName = MKDSlideViewController;
+			productReference = DA953C60148AD3700075A1E2 /* MKDSlideViewController.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		DA953C57148AD36F0075A1E2 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0420;
+			};
+			buildConfigurationList = DA953C5A148AD36F0075A1E2 /* Build configuration list for PBXProject "MKDSlideViewController" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = DA953C55148AD36F0075A1E2;
+			productRefGroup = DA953C61148AD3700075A1E2 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				DA953C5F148AD3700075A1E2 /* MKDSlideViewController */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		DA953C5E148AD3700075A1E2 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DA953C6F148AD3700075A1E2 /* InfoPlist.strings in Resources */,
+				DA953C7B148AD3700075A1E2 /* ViewController_iPhone.xib in Resources */,
+				DA953C7E148AD3700075A1E2 /* ViewController_iPad.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		DA953C5C148AD3700075A1E2 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DA953C71148AD3700075A1E2 /* main.m in Sources */,
+				DA953C75148AD3700075A1E2 /* AppDelegate.m in Sources */,
+				DA953C78148AD3700075A1E2 /* ViewController.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		DA953C6D148AD3700075A1E2 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				DA953C6E148AD3700075A1E2 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		DA953C79148AD3700075A1E2 /* ViewController_iPhone.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				DA953C7A148AD3700075A1E2 /* en */,
+			);
+			name = ViewController_iPhone.xib;
+			sourceTree = "<group>";
+		};
+		DA953C7C148AD3700075A1E2 /* ViewController_iPad.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				DA953C7D148AD3700075A1E2 /* en */,
+			);
+			name = ViewController_iPad.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		DA953C7F148AD3700075A1E2 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		DA953C80148AD3700075A1E2 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		DA953C82148AD3700075A1E2 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "MKDSlideViewController/MKDSlideViewController-Prefix.pch";
+				INFOPLIST_FILE = "MKDSlideViewController/MKDSlideViewController-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		DA953C83148AD3700075A1E2 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "MKDSlideViewController/MKDSlideViewController-Prefix.pch";
+				INFOPLIST_FILE = "MKDSlideViewController/MKDSlideViewController-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		DA953C5A148AD36F0075A1E2 /* Build configuration list for PBXProject "MKDSlideViewController" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				DA953C7F148AD3700075A1E2 /* Debug */,
+				DA953C80148AD3700075A1E2 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		DA953C81148AD3700075A1E2 /* Build configuration list for PBXNativeTarget "MKDSlideViewController" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				DA953C82148AD3700075A1E2 /* Debug */,
+				DA953C83148AD3700075A1E2 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = DA953C57148AD36F0075A1E2 /* Project object */;
+}
