@@ -58,6 +58,7 @@
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
+    NSLog(@"Rotate Main View Controller?");
     // Return YES for supported orientations
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
 }

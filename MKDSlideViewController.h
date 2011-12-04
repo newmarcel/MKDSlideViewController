@@ -10,7 +10,7 @@
 #import <QuartzCore/QuartzCore.h>  // Don't forget to add the QuartzCore Framework to your project
 
 #define kSlideSpeed 0.3f
-#define kSlideOverlapWidth 44.0f;
+#define kSlideOverlapWidth 52.0f;
 
 @interface MKDSlideViewController : UIViewController
 
@@ -23,7 +23,8 @@
 - (id)initWithRootViewController:(UIViewController *)rootViewController;
 - (void)setLeftViewController:(UIViewController *)leftViewController rightViewController:(UIViewController *)rightViewController;
 
-- (IBAction)slideToRight:(id)sender;
-- (IBAction)slideToLeft:(id)sender;
+- (IBAction)showLeftViewController:(id)sender;
+- (IBAction)showRightViewController:(id)sender;
+- (IBAction)showMainViewController:(id)sender;
 
 @end

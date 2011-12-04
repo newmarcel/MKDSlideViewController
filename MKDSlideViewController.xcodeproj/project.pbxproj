@@ -7,16 +7,17 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		DA330126148C1F0200E6DDA4 /* ButtonMenu.png in Resources */ = {isa = PBXBuildFile; fileRef = DA330124148C1F0200E6DDA4 /* ButtonMenu.png */; };
+		DA330127148C1F0200E6DDA4 /* ButtonMenu@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DA330125148C1F0200E6DDA4 /* ButtonMenu@2x.png */; };
+		DA330129148C21A600E6DDA4 /* LeftViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = DA33012A148C21A600E6DDA4 /* LeftViewController.xib */; };
 		DA63576E148BAC3400464E51 /* RightViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DA63576B148BAC3400464E51 /* RightViewController.m */; };
 		DA63576F148BAC3400464E51 /* RightViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = DA63576C148BAC3400464E51 /* RightViewController.xib */; };
 		DA953C65148AD3700075A1E2 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DA953C64148AD3700075A1E2 /* UIKit.framework */; };
 		DA953C67148AD3700075A1E2 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DA953C66148AD3700075A1E2 /* Foundation.framework */; };
 		DA953C69148AD3700075A1E2 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DA953C68148AD3700075A1E2 /* CoreGraphics.framework */; };
-		DA953C6F148AD3700075A1E2 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = DA953C6D148AD3700075A1E2 /* InfoPlist.strings */; };
 		DA953C71148AD3700075A1E2 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = DA953C70148AD3700075A1E2 /* main.m */; };
 		DA953C75148AD3700075A1E2 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = DA953C74148AD3700075A1E2 /* AppDelegate.m */; };
-		DA953C78148AD3700075A1E2 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DA953C77148AD3700075A1E2 /* ViewController.m */; };
-		DA953C7B148AD3700075A1E2 /* ViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = DA953C79148AD3700075A1E2 /* ViewController.xib */; };
+		DA953C78148AD3700075A1E2 /* LeftViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DA953C77148AD3700075A1E2 /* LeftViewController.m */; };
 		DA953C8C148AD61E0075A1E2 /* MKDSlideViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DA953C8B148AD61E0075A1E2 /* MKDSlideViewController.m */; };
 		DA953C90148ADA440075A1E2 /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DA953C8E148ADA440075A1E2 /* MainViewController.m */; };
 		DA953C91148ADA440075A1E2 /* MainViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = DA953C8F148ADA440075A1E2 /* MainViewController.xib */; };
@@ -26,6 +27,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		DA330124148C1F0200E6DDA4 /* ButtonMenu.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = ButtonMenu.png; path = Images/ButtonMenu.png; sourceTree = SOURCE_ROOT; };
+		DA330125148C1F0200E6DDA4 /* ButtonMenu@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "ButtonMenu@2x.png"; path = "Images/ButtonMenu@2x.png"; sourceTree = SOURCE_ROOT; };
+		DA33012A148C21A600E6DDA4 /* LeftViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LeftViewController.xib; sourceTree = "<group>"; };
 		DA63576A148BAC3400464E51 /* RightViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.objj.h; path = RightViewController.h; sourceTree = "<group>"; };
 		DA63576B148BAC3400464E51 /* RightViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RightViewController.m; sourceTree = "<group>"; };
 		DA63576C148BAC3400464E51 /* RightViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RightViewController.xib; sourceTree = "<group>"; };
@@ -34,14 +38,12 @@
 		DA953C66148AD3700075A1E2 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		DA953C68148AD3700075A1E2 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		DA953C6C148AD3700075A1E2 /* MKDSlideViewController-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "MKDSlideViewController-Info.plist"; sourceTree = "<group>"; };
-		DA953C6E148AD3700075A1E2 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		DA953C70148AD3700075A1E2 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		DA953C72148AD3700075A1E2 /* MKDSlideViewController-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "MKDSlideViewController-Prefix.pch"; sourceTree = "<group>"; };
 		DA953C73148AD3700075A1E2 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		DA953C74148AD3700075A1E2 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		DA953C76148AD3700075A1E2 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		DA953C77148AD3700075A1E2 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
-		DA953C7A148AD3700075A1E2 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/ViewController.xib; sourceTree = "<group>"; };
+		DA953C76148AD3700075A1E2 /* LeftViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.objj.h; path = LeftViewController.h; sourceTree = "<group>"; };
+		DA953C77148AD3700075A1E2 /* LeftViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LeftViewController.m; sourceTree = "<group>"; };
 		DA953C8A148AD61E0075A1E2 /* MKDSlideViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MKDSlideViewController.h; sourceTree = "<group>"; };
 		DA953C8B148AD61E0075A1E2 /* MKDSlideViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MKDSlideViewController.m; sourceTree = "<group>"; };
 		DA953C8D148ADA440075A1E2 /* MainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainViewController.h; sourceTree = "<group>"; };
@@ -68,6 +70,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		DA330128148C206700E6DDA4 /* Images */ = {
+			isa = PBXGroup;
+			children = (
+				DA330124148C1F0200E6DDA4 /* ButtonMenu.png */,
+				DA330125148C1F0200E6DDA4 /* ButtonMenu@2x.png */,
+			);
+			name = Images;
+			sourceTree = "<group>";
+		};
 		DA953C55148AD36F0075A1E2 = {
 			isa = PBXGroup;
 			children = (
@@ -113,7 +124,6 @@
 			isa = PBXGroup;
 			children = (
 				DA953C6C148AD3700075A1E2 /* MKDSlideViewController-Info.plist */,
-				DA953C6D148AD3700075A1E2 /* InfoPlist.strings */,
 				DA953C70148AD3700075A1E2 /* main.m */,
 				DA953C72148AD3700075A1E2 /* MKDSlideViewController-Prefix.pch */,
 			);
@@ -125,6 +135,7 @@
 			children = (
 				DA953C8A148AD61E0075A1E2 /* MKDSlideViewController.h */,
 				DA953C8B148AD61E0075A1E2 /* MKDSlideViewController.m */,
+				DA330128148C206700E6DDA4 /* Images */,
 			);
 			name = "Slide View Controller";
 			sourceTree = "<group>";
@@ -138,9 +149,9 @@
 				DA953C98148AE6180075A1E2 /* SecondLevelViewController.h */,
 				DA953C99148AE6180075A1E2 /* SecondLevelViewController.m */,
 				DA953C9A148AE6180075A1E2 /* SecondLevelViewController.xib */,
-				DA953C76148AD3700075A1E2 /* ViewController.h */,
-				DA953C77148AD3700075A1E2 /* ViewController.m */,
-				DA953C79148AD3700075A1E2 /* ViewController.xib */,
+				DA953C76148AD3700075A1E2 /* LeftViewController.h */,
+				DA953C77148AD3700075A1E2 /* LeftViewController.m */,
+				DA33012A148C21A600E6DDA4 /* LeftViewController.xib */,
 				DA63576A148BAC3400464E51 /* RightViewController.h */,
 				DA63576B148BAC3400464E51 /* RightViewController.m */,
 				DA63576C148BAC3400464E51 /* RightViewController.xib */,
@@ -198,11 +209,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DA953C6F148AD3700075A1E2 /* InfoPlist.strings in Resources */,
-				DA953C7B148AD3700075A1E2 /* ViewController.xib in Resources */,
+				DA330129148C21A600E6DDA4 /* LeftViewController.xib in Resources */,
 				DA953C91148ADA440075A1E2 /* MainViewController.xib in Resources */,
 				DA953C9C148AE6180075A1E2 /* SecondLevelViewController.xib in Resources */,
 				DA63576F148BAC3400464E51 /* RightViewController.xib in Resources */,
+				DA330126148C1F0200E6DDA4 /* ButtonMenu.png in Resources */,
+				DA330127148C1F0200E6DDA4 /* ButtonMenu@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -215,7 +227,7 @@
 			files = (
 				DA953C71148AD3700075A1E2 /* main.m in Sources */,
 				DA953C75148AD3700075A1E2 /* AppDelegate.m in Sources */,
-				DA953C78148AD3700075A1E2 /* ViewController.m in Sources */,
+				DA953C78148AD3700075A1E2 /* LeftViewController.m in Sources */,
 				DA953C8C148AD61E0075A1E2 /* MKDSlideViewController.m in Sources */,
 				DA953C90148ADA440075A1E2 /* MainViewController.m in Sources */,
 				DA953C9B148AE6180075A1E2 /* SecondLevelViewController.m in Sources */,
@@ -224,25 +236,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXVariantGroup section */
-		DA953C6D148AD3700075A1E2 /* InfoPlist.strings */ = {
-			isa = PBXVariantGroup;
-			children = (
-				DA953C6E148AD3700075A1E2 /* en */,
-			);
-			name = InfoPlist.strings;
-			sourceTree = "<group>";
-		};
-		DA953C79148AD3700075A1E2 /* ViewController.xib */ = {
-			isa = PBXVariantGroup;
-			children = (
-				DA953C7A148AD3700075A1E2 /* en */,
-			);
-			name = ViewController.xib;
-			sourceTree = "<group>";
-		};
-/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		DA953C7F148AD3700075A1E2 /* Debug */ = {

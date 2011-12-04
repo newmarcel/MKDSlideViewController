@@ -10,7 +10,7 @@
 
 #import "MKDSlideViewController.h"
 #import "MainViewController.h"
-#import "ViewController.h"
+#import "LeftViewController.h"
 #import "RightViewController.h"
 
 @implementation AppDelegate
@@ -28,6 +28,7 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     self.window = [[[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]] autorelease];
+    
     // Override point for customization after application launch.
     /*if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone) {
         self.viewController = [[[MKDSlideViewController alloc] initWithNibName:@"ViewController_iPhone" bundle:nil] autorelease];
@@ -41,10 +42,10 @@
     [mainVc release];
     
     // Left & Right
-    ViewController * vc = [[ViewController alloc] initWithNibName:@"ViewController" bundle:nil];
+    LeftViewController * vcLeft = [[LeftViewController alloc] initWithNibName:@"LeftViewController" bundle:nil];
     RightViewController * vcRight = [[RightViewController alloc] initWithNibName:@"RightViewController" bundle:nil];
-    [self.viewController setLeftViewController:vc rightViewController:vcRight];
-    [vc release];
+    [self.viewController setLeftViewController:vcLeft rightViewController:vcRight];
+    [vcLeft release];
     [vcRight release];
     
     self.window.rootViewController = self.viewController;

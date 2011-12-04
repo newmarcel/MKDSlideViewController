@@ -6,9 +6,9 @@
 //  Copyright (c) 2011 __MyCompanyName__. All rights reserved.
 //
 
-#import "ViewController.h"
+#import "LeftViewController.h"
 
-@implementation ViewController
+@implementation LeftViewController
 
 - (void)didReceiveMemoryWarning
 {
@@ -38,6 +38,7 @@
 
 - (void)viewDidAppear:(BOOL)animated
 {
+    NSLog(@"Yes, I'm active now.");
     [super viewDidAppear:animated];
 }
 
@@ -53,7 +54,6 @@
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
-    NSLog(@"Rotate View Controller?");
     // Return YES for supported orientations
     if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone) {
         return (interfaceOrientation != UIInterfaceOrientationPortraitUpsideDown);

@@ -13,7 +13,7 @@
 		<array key="IBDocument.IntegratedClassDependencies">
 			<string>IBProxyObject</string>
 			<string>IBUIView</string>
-			<string>IBUIButton</string>
+			<string>IBUILabel</string>
 		</array>
 		<array key="IBDocument.PluginDependencies">
 			<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
@@ -35,43 +35,41 @@
 				<reference key="NSNextResponder"/>
 				<int key="NSvFlags">274</int>
 				<array class="NSMutableArray" key="NSSubviews">
-					<object class="IBUIButton" id="942679370">
+					<object class="IBUILabel" id="16586333">
 						<reference key="NSNextResponder" ref="191373211"/>
 						<int key="NSvFlags">292</int>
-						<string key="NSFrame">{{20, 20}, {280, 37}}</string>
+						<string key="NSFrame">{{20, 20}, {280, 21}}</string>
 						<reference key="NSSuperview" ref="191373211"/>
-						<string key="NSReuseIdentifierKey">_NS:225</string>
+						<reference key="NSNextKeyView"/>
+						<string key="NSReuseIdentifierKey">_NS:328</string>
 						<bool key="IBUIOpaque">NO</bool>
+						<bool key="IBUIClipsSubviews">YES</bool>
+						<int key="IBUIContentMode">7</int>
+						<bool key="IBUIUserInteractionEnabled">NO</bool>
 						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
-						<int key="IBUIContentHorizontalAlignment">0</int>
-						<int key="IBUIContentVerticalAlignment">0</int>
-						<int key="IBUIButtonType">1</int>
-						<string key="IBUINormalTitle">Second Level</string>
-						<object class="NSColor" key="IBUIHighlightedTitleColor">
-							<int key="NSColorSpace">3</int>
-							<bytes key="NSWhite">MQA</bytes>
+						<string key="IBUIText">Second Level View Controller</string>
+						<object class="NSColor" key="IBUITextColor">
+							<int key="NSColorSpace">2</int>
+							<bytes key="NSRGB">MC4yOTgwMzkyMjc3IDAuMzM3MjU0OTExNyAwLjQyMzUyOTQ0NjEAA</bytes>
 						</object>
-						<object class="NSColor" key="IBUINormalTitleColor">
-							<int key="NSColorSpace">1</int>
-							<bytes key="NSRGB">MC4xOTYwNzg0MzQ2IDAuMzA5ODAzOTMyOSAwLjUyMTU2ODY1NgA</bytes>
-						</object>
-						<object class="NSColor" key="IBUINormalTitleShadowColor">
-							<int key="NSColorSpace">3</int>
-							<bytes key="NSWhite">MC41AA</bytes>
-						</object>
+						<nil key="IBUIHighlightedColor"/>
+						<int key="IBUIBaselineAdjustment">1</int>
+						<float key="IBUIMinimumFontSize">10</float>
+						<int key="IBUITextAlignment">1</int>
 						<object class="IBUIFontDescription" key="IBUIFontDescription">
 							<int key="type">2</int>
-							<double key="pointSize">15</double>
+							<double key="pointSize">17</double>
 						</object>
 						<object class="NSFont" key="IBUIFont">
 							<string key="NSName">Helvetica-Bold</string>
-							<double key="NSSize">15</double>
+							<double key="NSSize">17</double>
 							<int key="NSfFlags">16</int>
 						</object>
 					</object>
 				</array>
 				<string key="NSFrame">{{0, 64}, {320, 416}}</string>
 				<reference key="NSSuperview"/>
+				<reference key="NSNextKeyView" ref="16586333"/>
 				<object class="NSColor" key="IBUIBackgroundColor">
 					<int key="NSColorSpace">3</int>
 					<bytes key="NSWhite">MQA</bytes>
@@ -109,7 +107,7 @@
 						<int key="objectID">1</int>
 						<reference key="object" ref="191373211"/>
 						<array class="NSMutableArray" key="children">
-							<reference ref="942679370"/>
+							<reference ref="16586333"/>
 						</array>
 						<reference key="parent" ref="0"/>
 					</object>
@@ -125,8 +123,8 @@
 						<reference key="parent" ref="0"/>
 					</object>
 					<object class="IBObjectRecord">
-						<int key="objectID">4</int>
-						<reference key="object" ref="942679370"/>
+						<int key="objectID">5</int>
+						<reference key="object" ref="16586333"/>
 						<reference key="parent" ref="191373211"/>
 					</object>
 				</array>
@@ -137,13 +135,13 @@
 				<string key="-2.CustomClassName">UIResponder</string>
 				<string key="-2.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 				<string key="1.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
-				<string key="4.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
+				<string key="5.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 			</dictionary>
 			<dictionary class="NSMutableDictionary" key="unlocalizedProperties"/>
 			<nil key="activeLocalization"/>
 			<dictionary class="NSMutableDictionary" key="localizations"/>
 			<nil key="sourceID"/>
-			<int key="maxID">4</int>
+			<int key="maxID">5</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes"/>
 		<int key="IBDocument.localizationMode">0</int>
