@@ -28,3 +28,10 @@
 - (IBAction)showMainViewController:(id)sender;
 
 @end
+
+@protocol MKDSlideViewControllerDelegate <NSObject>
+
+- (void)slideViewController:(MKDSlideViewController *)svc willSlideToViewController:(UIViewController *)vc;
+- (void)slideViewController:(MKDSlideViewController *)svc didSlideToViewController:(UIViewController *)vc;
+
+@end
