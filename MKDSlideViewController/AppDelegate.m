@@ -8,7 +8,10 @@
 
 #import "AppDelegate.h"
 
+#import "MKDSlideViewController.h"
+#import "MainViewController.h"
 #import "ViewController.h"
+#import "RightViewController.h"
 
 @implementation AppDelegate
 
@@ -26,11 +29,24 @@
 {
     self.window = [[[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]] autorelease];
     // Override point for customization after application launch.
-    if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone) {
-        self.viewController = [[[ViewController alloc] initWithNibName:@"ViewController_iPhone" bundle:nil] autorelease];
+    /*if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone) {
+        self.viewController = [[[MKDSlideViewController alloc] initWithNibName:@"ViewController_iPhone" bundle:nil] autorelease];
     } else {
-        self.viewController = [[[ViewController alloc] initWithNibName:@"ViewController_iPad" bundle:nil] autorelease];
-    }
+        self.viewController = [[[MKDSlideViewController alloc] initWithNibName:@"ViewController_iPad" bundle:nil] autorelease];
+    }*/
+    
+    MainViewController * mainVc = [[MainViewController alloc] initWithNibName:@"MainViewController" bundle:nil];
+    
+    self.viewController = [[[MKDSlideViewController alloc] initWithRootViewController:mainVc] autorelease];
+    [mainVc release];
+    
+    // Left & Right
+    ViewController * vc = [[ViewController alloc] initWithNibName:@"ViewController" bundle:nil];
+    RightViewController * vcRight = [[RightViewController alloc] initWithNibName:@"RightViewController" bundle:nil];
+    [self.viewController setLeftViewController:vc rightViewController:vcRight];
+    [vc release];
+    [vcRight release];
+    
     self.window.rootViewController = self.viewController;
     [self.window makeKeyAndVisible];
     return YES;
