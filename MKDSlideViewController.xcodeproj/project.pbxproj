@@ -117,7 +117,7 @@
 				DA953C6B148AD3700075A1E2 /* Supporting Files */,
 			);
 			name = "Example Project";
-			path = MKDSlideViewController;
+			path = ExampleProject;
 			sourceTree = "<group>";
 		};
 		DA953C6B148AD3700075A1E2 /* Supporting Files */ = {
@@ -287,8 +287,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "MKDSlideViewController/MKDSlideViewController-Prefix.pch";
-				INFOPLIST_FILE = "MKDSlideViewController/MKDSlideViewController-Info.plist";
+				GCC_PREFIX_HEADER = "ExampleProject/MKDSlideViewController-Prefix.pch";
+				INFOPLIST_FILE = "ExampleProject/MKDSlideViewController-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -298,8 +298,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "MKDSlideViewController/MKDSlideViewController-Prefix.pch";
-				INFOPLIST_FILE = "MKDSlideViewController/MKDSlideViewController-Info.plist";
+				GCC_PREFIX_HEADER = "ExampleProject/MKDSlideViewController-Prefix.pch";
+				INFOPLIST_FILE = "ExampleProject/MKDSlideViewController-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
