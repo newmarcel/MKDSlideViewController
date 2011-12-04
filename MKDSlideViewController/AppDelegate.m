@@ -16,7 +16,7 @@
 @implementation AppDelegate
 
 @synthesize window = _window;
-@synthesize viewController = _viewController;
+@synthesize slideViewController = _viewController;
 
 - (void)dealloc
 {
@@ -38,17 +38,19 @@
     
     MainViewController * mainVc = [[MainViewController alloc] initWithNibName:@"MainViewController" bundle:nil];
     
-    self.viewController = [[[MKDSlideViewController alloc] initWithRootViewController:mainVc] autorelease];
-    [mainVc release];
+    self.slideViewController = [[[MKDSlideViewController alloc] initWithRootViewController:mainVc] autorelease];
     
     // Left & Right
     LeftViewController * vcLeft = [[LeftViewController alloc] initWithNibName:@"LeftViewController" bundle:nil];
+    vcLeft.mainViewController = mainVc;  // assign weak reference to main view controller
     RightViewController * vcRight = [[RightViewController alloc] initWithNibName:@"RightViewController" bundle:nil];
-    [self.viewController setLeftViewController:vcLeft rightViewController:vcRight];
+    [self.slideViewController setLeftViewController:vcLeft rightViewController:vcRight];
+    
     [vcLeft release];
     [vcRight release];
+    [mainVc release];
     
-    self.window.rootViewController = self.viewController;
+    self.window.rootViewController = self.slideViewController;
     [self.window makeKeyAndVisible];
     return YES;
 }
