@@ -24,11 +24,11 @@ See `ExampleProject` for a basic usage example.
 
 ## Screenshots ##
 
-![Screenshot 1](./Screenshot-1.png)
+![Screenshot 1](https://github.com/newmarcel/MKDSlideViewController/blob/master/Screenshot-1.png)
 
-![Screenshot 2](./Screenshot-2.png)
+![Screenshot 2](https://github.com/newmarcel/MKDSlideViewController/blob/master/Screenshot-2.png)
 
-![Screenshot 3](./Screenshot-3.png)
+![Screenshot 3](https://github.com/newmarcel/MKDSlideViewController/blob/master/Screenshot-3.png)
 
 
 
