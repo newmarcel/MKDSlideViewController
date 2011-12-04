@@ -7,8 +7,13 @@
 //
 
 #import "LeftViewController.h"
+#import "MainViewController.h"
+#import "AppDelegate.h"
+#import "MKDSlideViewController.h"
 
 @implementation LeftViewController
+
+@synthesize mainViewController = _mainViewController;
 
 - (void)didReceiveMemoryWarning
 {
@@ -29,6 +34,7 @@
     [super viewDidUnload];
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
+    self.mainViewController = nil;
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -38,7 +44,6 @@
 
 - (void)viewDidAppear:(BOOL)animated
 {
-    NSLog(@"Yes, I'm active now.");
     [super viewDidAppear:animated];
 }
 
@@ -60,6 +65,33 @@
     } else {
         return YES;
     }
+}
+
+#pragma mark -
+
+- (IBAction)changeText:(id)sender
+{
+    MainViewController * main = (MainViewController *)self.mainViewController;
+    if( self.mainViewController )
+    {
+        [main setDetailText:@"Pressed a button…"];
+    }
+}
+
+- (IBAction)navigateToMainViewController:(id)sender
+{
+    // Use the application delegate to interact with the Slide View Controller
+    AppDelegate * appDelegate = [[UIApplication sharedApplication] delegate];
+    MKDSlideViewController * slideViewController = appDelegate.slideViewController;
+    [slideViewController showMainViewController:self];
+}
+
+- (IBAction)navigateToRightViewController:(id)sender
+{
+    // Use the application delegate to interact with the Slide View Controller
+    AppDelegate * appDelegate = [[UIApplication sharedApplication] delegate];
+    MKDSlideViewController * slideViewController = appDelegate.slideViewController;
+    [slideViewController showRightViewController:self];
 }
 
 @end

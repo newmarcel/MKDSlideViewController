@@ -10,4 +10,10 @@
 
 @interface LeftViewController : UIViewController
 
+@property (nonatomic, assign) UIViewController * mainViewController;
+
+- (IBAction)changeText:(id)sender;
+- (IBAction)navigateToMainViewController:(id)sender;
+- (IBAction)navigateToRightViewController:(id)sender;
+
 @end
