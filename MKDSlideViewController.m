@@ -267,7 +267,7 @@
 
 - (IBAction)showRightViewController:(id)sender
 {
-    [self.view sendSubviewToBack:self.leftViewController.view];
+    [self.view sendSubviewToBack:self.leftViewController.view];  // FIXME: Correct timing, when sending to back
     
     [UIView animateWithDuration:kSlideSpeed animations:^{
         CGRect theFrame = self.mainViewController.view.frame;
