@@ -18,16 +18,10 @@
 @synthesize window = _window;
 @synthesize slideViewController = _viewController;
 
-- (void)dealloc
-{
-    [_window release];
-    [_viewController release];
-    [super dealloc];
-}
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    self.window = [[[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]] autorelease];
+    self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     
     // Override point for customization after application launch.
     /*if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone) {
@@ -38,7 +32,7 @@
     
     MainViewController * mainVc = [[MainViewController alloc] initWithNibName:@"MainViewController" bundle:nil];
     
-    self.slideViewController = [[[MKDSlideViewController alloc] initWithRootViewController:mainVc] autorelease];
+    self.slideViewController = [[MKDSlideViewController alloc] initWithRootViewController:mainVc];
     
     // Left & Right
     LeftViewController * vcLeft = [[LeftViewController alloc] initWithNibName:@"LeftViewController" bundle:nil];
@@ -46,9 +40,6 @@
     RightViewController * vcRight = [[RightViewController alloc] initWithNibName:@"RightViewController" bundle:nil];
     [self.slideViewController setLeftViewController:vcLeft rightViewController:vcRight];
     
-    [vcLeft release];
-    [vcRight release];
-    [mainVc release];
     
     self.window.rootViewController = self.slideViewController;
     [self.window makeKeyAndVisible];

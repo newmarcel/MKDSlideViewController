@@ -10,10 +10,10 @@
 
 @interface MKDSlideViewController ()
 
-@property (nonatomic, retain) UIViewController * mainViewController;
-@property (nonatomic, retain) UIView * mainContainerView;
-@property (nonatomic, retain) UIView * mainTapView;
-@property (nonatomic, retain) UIPanGestureRecognizer * panGesture;
+@property (nonatomic, strong) UIViewController * mainViewController;
+@property (nonatomic, strong) UIView * mainContainerView;
+@property (nonatomic, strong) UIView * mainTapView;
+@property (nonatomic, strong) UIPanGestureRecognizer * panGesture;
 @property (nonatomic) CGPoint previousLocation;
 
 - (void)setupPanGestureForView:(UIView *)view;
@@ -67,7 +67,6 @@
         [self setupPanGestureForView:navController.navigationBar];
         
         self.mainViewController = navController;
-        [navController release];
         [self addChildViewController:self.mainViewController];
         self.mainViewController.view.clipsToBounds = YES;
         
@@ -95,7 +94,6 @@
     }
     
     self.view = containerView;
-    [containerView release];
 }
 
 /*
@@ -119,20 +117,6 @@
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
 }
 
-- (void)dealloc
-{
-    [_leftViewController release];
-    [_rightViewController release];
-    [_mainViewController release];
-    [_rootViewController release];
-    [_mainContainerView release];
-    [_mainTapView release];
-    
-    [_panGesture release];
-    [_menuBarButtonItem release];
-    
-    [super dealloc];
-}
 
 #pragma mark - Sub View Controllers
 
@@ -166,7 +150,6 @@
     pan.maximumNumberOfTouches = 1;
     self.panGesture = pan;
     [view addGestureRecognizer:pan];
-    [pan release];
 }
 
 - (void)panGesture:(UIPanGestureRecognizer *)gesture
@@ -233,7 +216,6 @@
         tap.numberOfTouchesRequired = 1;
         
         [self.mainTapView addGestureRecognizer:tap];
-        [tap release];
         
         // Pan Gesture
         [self setupPanGestureForView:self.mainTapView];

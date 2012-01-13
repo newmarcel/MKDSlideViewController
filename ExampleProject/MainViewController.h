@@ -10,7 +10,7 @@
 
 @interface MainViewController : UIViewController
 
-@property (nonatomic, retain) IBOutlet UITextView * textView;
+@property (nonatomic, strong) IBOutlet UITextView * textView;
 
 - (void)setDetailText:(NSString *)detailText;
 
