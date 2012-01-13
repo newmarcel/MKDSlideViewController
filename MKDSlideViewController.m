@@ -55,7 +55,7 @@
 // Implement loadView to create a view hierarchy programmatically, without using a nib.
 - (void)loadView
 {
-    UIView * containerView = [[UIView alloc] initWithFrame:CGRectMake(0.0, 0.0, 320.0, 460.0)];
+    UIView * containerView = [[UIView alloc] initWithFrame:CGRectMake(0.0, 0.0, 320.0, 480.0)];
     containerView.autoresizingMask = UIViewAutoresizingFlexibleHeight|UIViewAutoresizingFlexibleWidth;
     containerView.backgroundColor = [UIColor viewFlipsideBackgroundColor];
     
@@ -168,6 +168,13 @@
         
         // Calculate position offset
         CGPoint locationInView = [gesture translationInView:self.view];
+
+        if (!self.rightViewController && locationInView.x < 0) {
+            return;
+        }
+        if (!self.leftViewController && locationInView.x > 0) {
+            return;
+        }
         CGFloat deltaX = locationInView.x - self.previousLocation.x;
         
         // Update view frame
@@ -236,6 +243,10 @@
 
 - (IBAction)showLeftViewController:(id)sender
 {
+    if(! self.leftViewController) {
+        return;
+    }
+
     [self.view sendSubviewToBack:self.rightViewController.view];
     
     [UIView animateWithDuration:kSlideSpeed animations:^{
@@ -249,6 +260,10 @@
 
 - (IBAction)showRightViewController:(id)sender
 {
+    if(! self.rightViewController) {
+        return;
+    }
+
     [self.view sendSubviewToBack:self.leftViewController.view];  // FIXME: Correct timing, when sending to back
     
     [UIView animateWithDuration:kSlideSpeed animations:^{
