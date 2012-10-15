@@ -286,6 +286,7 @@
 		DA953C82148AD3700075A1E2 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_OBJC_ARC = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "ExampleProject/MKDSlideViewController-Prefix.pch";
 				INFOPLIST_FILE = "ExampleProject/MKDSlideViewController-Info.plist";
@@ -297,6 +298,7 @@
 		DA953C83148AD3700075A1E2 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_OBJC_ARC = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "ExampleProject/MKDSlideViewController-Prefix.pch";
 				INFOPLIST_FILE = "ExampleProject/MKDSlideViewController-Info.plist";

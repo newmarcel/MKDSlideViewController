@@ -10,10 +10,10 @@
 
 @interface MKDSlideViewController ()
 
-@property (nonatomic, retain) UIViewController * mainViewController;
-@property (nonatomic, retain) UIView * mainContainerView;
-@property (nonatomic, retain) UIView * mainTapView;
-@property (nonatomic, retain) UIPanGestureRecognizer * panGesture;
+@property (nonatomic, strong) UIViewController * mainViewController;
+@property (nonatomic, strong) UIView * mainContainerView;
+@property (nonatomic, strong) UIView * mainTapView;
+@property (nonatomic, strong) UIPanGestureRecognizer * panGesture;
 @property (nonatomic) CGPoint previousLocation;
 
 - (void)setupPanGestureForView:(UIView *)view;
@@ -55,7 +55,7 @@
 // Implement loadView to create a view hierarchy programmatically, without using a nib.
 - (void)loadView
 {
-    UIView * containerView = [[UIView alloc] initWithFrame:CGRectMake(0.0, 0.0, 320.0, 460.0)];
+    UIView * containerView = [[UIView alloc] initWithFrame:CGRectMake(0.0, 0.0, 320.0, 480.0)];
     containerView.autoresizingMask = UIViewAutoresizingFlexibleHeight|UIViewAutoresizingFlexibleWidth;
     containerView.backgroundColor = [UIColor viewFlipsideBackgroundColor];
     
@@ -67,7 +67,6 @@
         [self setupPanGestureForView:navController.navigationBar];
         
         self.mainViewController = navController;
-        [navController release];
         [self addChildViewController:self.mainViewController];
         self.mainViewController.view.clipsToBounds = YES;
         
@@ -95,7 +94,6 @@
     }
     
     self.view = containerView;
-    [containerView release];
 }
 
 /*
@@ -119,20 +117,6 @@
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
 }
 
-- (void)dealloc
-{
-    [_leftViewController release];
-    [_rightViewController release];
-    [_mainViewController release];
-    [_rootViewController release];
-    [_mainContainerView release];
-    [_mainTapView release];
-    
-    [_panGesture release];
-    [_menuBarButtonItem release];
-    
-    [super dealloc];
-}
 
 #pragma mark - Sub View Controllers
 
@@ -166,7 +150,6 @@
     pan.maximumNumberOfTouches = 1;
     self.panGesture = pan;
     [view addGestureRecognizer:pan];
-    [pan release];
 }
 
 - (void)panGesture:(UIPanGestureRecognizer *)gesture
@@ -185,6 +168,13 @@
         
         // Calculate position offset
         CGPoint locationInView = [gesture translationInView:self.view];
+
+        if (!self.rightViewController && locationInView.x < 0) {
+            return;
+        }
+        if (!self.leftViewController && locationInView.x > 0) {
+            return;
+        }
         CGFloat deltaX = locationInView.x - self.previousLocation.x;
         
         // Update view frame
@@ -233,7 +223,6 @@
         tap.numberOfTouchesRequired = 1;
         
         [self.mainTapView addGestureRecognizer:tap];
-        [tap release];
         
         // Pan Gesture
         [self setupPanGestureForView:self.mainTapView];
@@ -254,6 +243,10 @@
 
 - (IBAction)showLeftViewController:(id)sender
 {
+    if(! self.leftViewController) {
+        return;
+    }
+
     [self.view sendSubviewToBack:self.rightViewController.view];
     
     [UIView animateWithDuration:kSlideSpeed animations:^{
@@ -267,6 +260,10 @@
 
 - (IBAction)showRightViewController:(id)sender
 {
+    if(! self.rightViewController) {
+        return;
+    }
+
     [self.view sendSubviewToBack:self.leftViewController.view];  // FIXME: Correct timing, when sending to back
     
     [UIView animateWithDuration:kSlideSpeed animations:^{

@@ -14,11 +14,11 @@
 
 @interface MKDSlideViewController : UIViewController
 
-@property (nonatomic, retain) UIViewController * leftViewController;
-@property (nonatomic, retain) UIViewController * rightViewController;
-@property (nonatomic, retain) UIViewController * rootViewController;
+@property (nonatomic, strong) UIViewController * leftViewController;
+@property (nonatomic, strong) UIViewController * rightViewController;
+@property (nonatomic, strong) UIViewController * rootViewController;
 
-@property (nonatomic, retain) UIBarButtonItem * menuBarButtonItem;
+@property (nonatomic, strong) UIBarButtonItem * menuBarButtonItem;
 
 - (id)initWithRootViewController:(UIViewController *)rootViewController;
 - (void)setLeftViewController:(UIViewController *)leftViewController rightViewController:(UIViewController *)rightViewController;

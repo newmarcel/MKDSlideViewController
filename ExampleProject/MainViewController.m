@@ -41,14 +41,12 @@
     
     UITapGestureRecognizer * tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tap)];
     [self.view addGestureRecognizer:tap];
-    [tap release];
 }
 
 - (void)tap
 {
     SecondLevelViewController * sl = [[SecondLevelViewController alloc] initWithNibName:@"SecondLevelViewController" bundle:nil];
     [self.navigationController pushViewController:sl animated:YES];
-    [sl release];
 }
 
 - (void)viewDidUnload
