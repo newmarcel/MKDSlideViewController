@@ -3,67 +3,44 @@
 //  MKDSlideViewController
 //
 //  Created by Marcel Dierkes on 03.12.11.
-//  Copyright (c) 2011 __MyCompanyName__. All rights reserved.
+//  Copyright (c) 2011 Marcel Dierkes. All rights reserved.
 //
 
 #import "MainViewController.h"
-#import "SecondLevelViewController.h"
+#import "MKDSlideViewController.h"
+#import "UIViewController+MKDSlideViewController.h"
 
 @implementation MainViewController
-
-@synthesize textView = _textView;
-
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
-{
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {
-        // Custom initialization
-    }
-    return self;
-}
-
-- (void)didReceiveMemoryWarning
-{
-    // Releases the view if it doesn't have a superview.
-    [super didReceiveMemoryWarning];
-    
-    // Release any cached data, images, etc that aren't in use.
-}
 
 #pragma mark - View lifecycle
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    // Do any additional setup after loading the view from its nib.
     
-    self.title = @"Main View Controller";
+    // You are now responsible for your own menu button
+    UIBarButtonItem * menuItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"ButtonMenu"]
+                                                                  style:UIBarButtonItemStyleBordered
+                                                                 target:self
+                                                                 action:@selector(showMenu:)];
+    self.navigationItem.leftBarButtonItem = menuItem;
+    [menuItem release];
+}
+
+- (IBAction)showMenu:(id)sender
+{
+    // Use the UIViewController (MKDSlideViewController) category as a helper
+    [self.navigationController.slideViewController showLeftViewControllerAnimated:YES];
+}
+
+- (void)didReceiveMemoryWarning
+{
+    [super didReceiveMemoryWarning];
     
-    UITapGestureRecognizer * tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tap)];
-    [self.view addGestureRecognizer:tap];
-    [tap release];
-}
-
-- (void)tap
-{
-    SecondLevelViewController * sl = [[SecondLevelViewController alloc] initWithNibName:@"SecondLevelViewController" bundle:nil];
-    [self.navigationController pushViewController:sl animated:YES];
-    [sl release];
-}
-
-- (void)viewDidUnload
-{
-    [super viewDidUnload];
-    // Release any retained subviews of the main view.
-    // e.g. self.myOutlet = nil;
-    self.textView = nil;
-}
-
-- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
-{
-    NSLog(@"Rotate Main View Controller?");
-    // Return YES for supported orientations
-    return (interfaceOrientation == UIInterfaceOrientationPortrait);
+    if( [self.view window] == nil )
+    {
+        self.textView = nil;
+    }
 }
 
 #pragma mark -

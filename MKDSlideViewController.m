@@ -3,323 +3,533 @@
 //  MKDSlideViewController
 //
 //  Created by Marcel Dierkes on 03.12.11.
-//  Copyright (c) 2011 Marcel Dierkes. All rights reserved.
+//  Copyright (c) 2011-2013 Marcel Dierkes. All rights reserved.
 //
 
 #import "MKDSlideViewController.h"
+#import <QuartzCore/QuartzCore.h>
+#import "UIViewController+MKDSlideViewController.h"
+
+typedef NS_ENUM(NSInteger, MKDSlideViewControllerPositionType) {
+    MKDSlideViewControllerPositionLeft = -1,
+    MKDSlideViewControllerPositionCenter = 0,
+    MKDSlideViewControllerPositionRight = 1,
+};
+
+@interface UIViewController (MKDSlideViewControllerPrivate)
+@property (nonatomic, retain, readwrite) MKDSlideViewController * slideViewController;
+@end
+
 
 @interface MKDSlideViewController ()
+@property (nonatomic, assign) MKDSlideViewControllerPositionType slidePosition;
 
-@property (nonatomic, retain) UIViewController * mainViewController;
-@property (nonatomic, retain) UIView * mainContainerView;
-@property (nonatomic, retain) UIView * mainTapView;
-@property (nonatomic, retain) UIPanGestureRecognizer * panGesture;
-@property (nonatomic) CGPoint previousLocation;
+@property (nonatomic, retain) UIView * leftPanelView;
+@property (nonatomic, retain) UIView * mainPanelView;
+@property (nonatomic, retain) UIView * rightPanelView;
 
-- (void)setupPanGestureForView:(UIView *)view;
-- (void)panGesture:(UIPanGestureRecognizer *)gesture;
-- (void)addTapViewOverlay;
-- (void)removeTapViewOverlay;
+@property (nonatomic, retain) UIPanGestureRecognizer * panGestureRecognizer;
+@property (nonatomic, retain) UIView * tapOverlayView;
+
+@property (nonatomic, assign) CGPoint previousLocationInView;
 
 @end
 
 @implementation MKDSlideViewController
 
-@synthesize leftViewController = _leftViewController, rightViewController = _rightViewController;
-@synthesize rootViewController = _rootViewController;
-@synthesize panGesture = _panGesture, menuBarButtonItem = _menuBarButtonItem;
-@synthesize mainViewController = _mainViewController, mainContainerView = _mainContainerView, mainTapView = _mainTapView;
-
-@synthesize previousLocation = _previousLocation;
-
-- (id)initWithRootViewController:(UIViewController *)rootViewController;
+- (instancetype)initWithMainViewController:(UIViewController *)mainViewController;
 {
     self = [super initWithNibName:nil bundle:nil];
-    if (self)
+    if( self )
     {
-        self.rootViewController = rootViewController;
+        self.mainViewController = mainViewController;
+        
+        // Setup defaults
+        _slidePosition = MKDSlideViewControllerPositionCenter;
+        _handleStatusBarStyleChanges = YES;
+        _mainStatusBarStyle = [[UIApplication sharedApplication] statusBarStyle];
+        _leftStatusBarStyle = UIStatusBarStyleBlackOpaque;
+        _rightStatusBarStyle = UIStatusBarStyleBlackOpaque;
+        _slideSpeed = 0.3f;
+        _overlapWidth = 52.0f;
     }
     return self;
 }
 
-- (void)didReceiveMemoryWarning
-{
-    // Releases the view if it doesn't have a superview.
-    [super didReceiveMemoryWarning];
-    
-    // Release any cached data, images, etc that aren't in use.
-}
-
-#pragma mark - View lifecycle
-
-// Implement loadView to create a view hierarchy programmatically, without using a nib.
-- (void)loadView
-{
-    UIView * containerView = [[UIView alloc] initWithFrame:CGRectMake(0.0, 0.0, 320.0, 460.0)];
-    containerView.autoresizingMask = UIViewAutoresizingFlexibleHeight|UIViewAutoresizingFlexibleWidth;
-    containerView.backgroundColor = [UIColor viewFlipsideBackgroundColor];
-    
-    if( self.rootViewController )
-    {
-        // Wrap inside Navigation Controller
-        UINavigationController * navController = [[UINavigationController alloc] initWithRootViewController:self.rootViewController];
-        
-        [self setupPanGestureForView:navController.navigationBar];
-        
-        self.mainViewController = navController;
-        [navController release];
-        [self addChildViewController:self.mainViewController];
-        self.mainViewController.view.clipsToBounds = YES;
-        
-        // Add menu item
-        if( self.menuBarButtonItem == nil )
-            _menuBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"ButtonMenu"] 
-                                                                  style:UIBarButtonItemStyleBordered 
-                                                                 target:self 
-                                                                 action:@selector(showLeftViewController:)
-                                  ];
-        
-        self.rootViewController.navigationItem.leftBarButtonItem = self.menuBarButtonItem;
-        
-        // Add layer shadow
-        CALayer * mainLayer = [self.mainViewController.view layer];
-        mainLayer.masksToBounds = NO;
-        CGPathRef pathRect = [UIBezierPath bezierPathWithRect:self.mainViewController.view.bounds].CGPath;
-        mainLayer.shadowColor = [UIColor blackColor].CGColor;
-        mainLayer.shadowOffset = CGSizeMake(0.0, 0.0);
-        mainLayer.shadowOpacity = 1.0f;
-        mainLayer.shadowPath = pathRect;
-        mainLayer.shadowRadius = 20.0f;
-        
-        [containerView addSubview:self.mainViewController.view];
-    }
-    
-    self.view = containerView;
-    [containerView release];
-}
-
-/*
-// Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
-- (void)viewDidLoad
-{
-    [super viewDidLoad];
-}
-*/
-
-- (void)viewDidUnload
-{
-    [super viewDidUnload];
-    // Release any retained subviews of the main view.
-    // e.g. self.myOutlet = nil;
-}
-
-- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
-{
-    // Return YES for supported orientations
-    return (interfaceOrientation == UIInterfaceOrientationPortrait);
-}
-
 - (void)dealloc
 {
+    [_leftPanelView release];
+    [_rightPanelView release];
+    [_mainPanelView release];
+    
+    [_tapOverlayView release];
+    
     [_leftViewController release];
     [_rightViewController release];
     [_mainViewController release];
-    [_rootViewController release];
-    [_mainContainerView release];
-    [_mainTapView release];
-    
-    [_panGesture release];
-    [_menuBarButtonItem release];
     
     [super dealloc];
 }
 
-#pragma mark - Sub View Controllers
-
-- (void)setLeftViewController:(UIViewController *)leftViewController rightViewController:(UIViewController *)rightViewController
+// Create the view hierarchy
+- (void)loadView
 {
-    [self.mainViewController.view removeFromSuperview];
+    UIView * view = [[UIView alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+    view.autoresizingMask = UIViewAutoresizingFlexibleHeight|UIViewAutoresizingFlexibleWidth;
+    view.backgroundColor = [UIColor blackColor];
     
-    self.leftViewController = leftViewController;
-    self.rightViewController = rightViewController;
+    // Setup Panels
+    _leftPanelView = [[UIView alloc] initWithFrame:view.bounds];
+    _leftPanelView.autoresizingMask = UIViewAutoresizingFlexibleWidth|UIViewAutoresizingFlexibleHeight;
+    _leftPanelView.backgroundColor = [UIColor blackColor];
+    [view addSubview:_leftPanelView];
     
-    if( self.leftViewController != nil )
+    _rightPanelView = [[UIView alloc] initWithFrame:view.bounds];
+    _rightPanelView.autoresizingMask = UIViewAutoresizingFlexibleWidth|UIViewAutoresizingFlexibleHeight;
+    _rightPanelView.backgroundColor = [UIColor blackColor];
+    [view addSubview:_rightPanelView];
+    
+    _mainPanelView = [[UIView alloc] initWithFrame:view.bounds];
+    _mainPanelView.autoresizingMask = UIViewAutoresizingFlexibleWidth|UIViewAutoresizingFlexibleHeight;
+    _mainPanelView.backgroundColor = [UIColor blackColor];
+    [view addSubview:_mainPanelView];
+    [_mainPanelView addGestureRecognizer:self.panGestureRecognizer];
+    
+    // Setup main layer shadow
+    CALayer * layer = _mainPanelView.layer;
+    layer.masksToBounds = NO;
+    layer.shadowColor = [UIColor blackColor].CGColor;
+    layer.shadowOffset = CGSizeMake(0.0f, 0.0f);
+    layer.shadowOpacity = 0.9f;
+    CGRect rect = CGRectInset(_mainPanelView.bounds, 0.0f, -40.0f); // negative inset for an even shadow
+    CGPathRef path = [UIBezierPath bezierPathWithRect:rect].CGPath;
+    layer.shadowPath = path;
+    layer.shadowRadius = 20.0f;
+    
+    if( self.mainViewController.view.superview == nil )
     {
-        [self addChildViewController:self.leftViewController];
-        [self.view addSubview:self.leftViewController.view];
+        self.mainViewController.view.frame = self.mainPanelView.bounds;
+        [self.mainPanelView addSubview:self.mainViewController.view];
+    }
+    if( self.leftViewController.view.superview == nil )
+    {
+        self.leftViewController.view.frame = self.leftPanelView.bounds;
+        [self.leftPanelView addSubview:self.leftViewController.view];
+    }
+    if( self.rightViewController.view.superview == nil )
+    {
+        self.rightViewController.view.frame = self.rightPanelView.bounds;
+        [self.rightPanelView addSubview:self.rightViewController.view];
     }
     
-    if( self.rightViewController != nil )
+    self.view = view;
+    [view release];
+}
+
+- (void)didReceiveMemoryWarning
+{
+    [super didReceiveMemoryWarning];
+    
+    if( [self.view window] == nil )
     {
-        [self addChildViewController:self.rightViewController];
-        [self.view addSubview:self.rightViewController.view];
+        self.delegate = nil;
+    }
+}
+
+#pragma mark - Child View Controllers
+
+- (void)setMainViewController:(UIViewController *)mainViewController
+{
+    if( _mainViewController != nil )
+    {
+        // Clean up
+        [_mainViewController removeFromParentViewController];
+        _mainViewController.slideViewController = nil;
+        [_mainViewController.view removeFromSuperview];
+        [_mainViewController release];
+    }
+    _mainViewController = [mainViewController retain];
+    _mainViewController.slideViewController = self;
+    [self addChildViewController:_mainViewController];
+    
+    if( _mainPanelView != nil )
+    {
+        // Add as subview, if slide view controller view is loaded.
+        self.mainViewController.view.frame = self.mainPanelView.bounds;
+        [self.mainPanelView addSubview:self.mainViewController.view];
+    }
+}
+
+- (void)setLeftViewController:(UIViewController *)leftViewController
+{
+    if( _leftViewController != nil )
+    {
+        // Clean up
+        [_leftViewController removeFromParentViewController];
+        _leftViewController.slideViewController = nil;
+        [_leftViewController.view removeFromSuperview];
+        [_leftViewController release];
+    }
+    _leftViewController = [leftViewController retain];
+    _leftViewController.slideViewController = self;
+    [self addChildViewController:_leftViewController];
+    
+    if( _leftPanelView != nil )
+    {
+        // Add as subview, if slide view controller view is loaded.
+        self.leftViewController.view.frame = self.leftPanelView.bounds;
+        [self.leftPanelView addSubview:self.leftViewController.view];
+    }
+}
+
+- (void)setRightViewController:(UIViewController *)rightViewController
+{
+    if( _rightViewController != nil )
+    {
+        // Clean up
+        [_rightViewController removeFromParentViewController];
+        _rightViewController.slideViewController = nil;
+        [_rightViewController.view removeFromSuperview];
+        [_rightViewController release];
+    }
+    _rightViewController = [rightViewController retain];
+    _rightViewController.slideViewController = self;
+    [self addChildViewController:_rightViewController];
+    
+    if( _rightPanelView != nil )
+    {
+        // Add as subview, if slide view controller view is loaded.
+        self.rightViewController.view.frame = self.rightPanelView.bounds;
+        [self.rightPanelView addSubview:self.rightViewController.view];
+    }
+}
+
+- (void)setMainViewController:(UIViewController *)mainViewController animated:(BOOL)animated
+{
+    if(!animated)
+    {
+        self.mainViewController = mainViewController;
+        [self showMainViewControllerAnimated:animated];
+        return;
     }
     
-    [self.view addSubview:self.mainViewController.view];
+    if( self.mainViewController != nil )
+    {
+        // Slide out of sight
+        CGRect initialFrame = self.mainPanelView.bounds;
+        CGRect frame = initialFrame;
+        frame.origin.x = frame.size.width + self.overlapWidth;
+        
+        [UIView animateWithDuration:self.slideSpeed
+                         animations:^{
+                             self.mainPanelView.frame = frame;
+                         }
+                         completion:^(BOOL finished) {
+                             // Replace the view controller and slide back in
+                             self.mainViewController = mainViewController;
+                             [self showMainViewControllerAnimated:animated];
+                         }
+         ];
+    }
+}
+
+#pragma mark - Rotation Handling
+
+- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
+{
+    return (interfaceOrientation == UIInterfaceOrientationPortrait);
+}
+
+- (NSUInteger)supportedInterfaceOrientations
+{
+    return UIInterfaceOrientationMaskPortrait;
 }
 
 #pragma mark - Panning
 
-- (void)setupPanGestureForView:(UIView *)view
+- (UIPanGestureRecognizer *)panGestureRecognizer
 {
-    UIPanGestureRecognizer * pan = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(panGesture:)];
-    pan.maximumNumberOfTouches = 1;
-    self.panGesture = pan;
-    [view addGestureRecognizer:pan];
-    [pan release];
+    if( _panGestureRecognizer == nil )
+    {
+        _panGestureRecognizer = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(pan:)];
+        _panGestureRecognizer.maximumNumberOfTouches = 1;
+    }
+    return _panGestureRecognizer;
 }
 
-- (void)panGesture:(UIPanGestureRecognizer *)gesture
+- (void)pan:(UIPanGestureRecognizer *)gesture
 {
     if( gesture.state == UIGestureRecognizerStateBegan )
     {
-        self.previousLocation = CGPointZero;
+        self.previousLocationInView = CGPointZero;
+        
+        if( [self isHandlingStatusBarStyleChanges] )
+            [[UIApplication sharedApplication] setStatusBarStyle:self.leftStatusBarStyle animated:YES];
     }
     else if( gesture.state == UIGestureRecognizerStateChanged )
     {
         // Decide, which view controller should be revealed
-        if( self.mainViewController.view.frame.origin.x <= 0.0f ) // left
-            [self.view sendSubviewToBack:self.leftViewController.view];
-        else 
-            [self.view sendSubviewToBack:self.rightViewController.view];
+        if( self.mainPanelView.frame.origin.x <= 0.0f ) // left
+            [self.view sendSubviewToBack:self.leftPanelView];
+        else
+            [self.view sendSubviewToBack:self.rightPanelView];
         
         // Calculate position offset
         CGPoint locationInView = [gesture translationInView:self.view];
-        CGFloat deltaX = locationInView.x - self.previousLocation.x;
+        CGFloat deltaX = locationInView.x - self.previousLocationInView.x;
         
         // Update view frame
-        CGRect newFrame = self.mainViewController.view.frame;
+        CGRect newFrame = self.mainPanelView.frame;
         newFrame.origin.x +=deltaX;
-        self.mainViewController.view.frame = newFrame;
+        self.mainPanelView.frame = newFrame;
         
-        self.previousLocation = locationInView;
+        self.previousLocationInView = locationInView;
     }
     else if( (gesture.state == UIGestureRecognizerStateEnded) || (gesture.state == UIGestureRecognizerStateCancelled) )
     {
-        CGFloat xOffset = self.mainViewController.view.frame.origin.x;
-
-        // snap to zero
-        if( (xOffset <= (self.mainViewController.view.frame.size.width/2)) && (xOffset >= (-self.mainViewController.view.frame.size.width/2)) )
-        {
-            [self showMainViewController:nil];
-        }
-        // reveal right view controller
-        else if( xOffset < (-self.mainViewController.view.frame.size.width/2) )
-        {
-            [self showRightViewController:nil];
-        }
-        // reveal left view controller
-        else
-        {
-            [self showLeftViewController:nil];
-        }
-        
-        self.previousLocation = CGPointZero;
+        [self updatePanelsForCurrentPosition];
     }
 }
 
-#pragma mark - Tappable View Overlay
+- (void)updatePanelsForCurrentPosition
+{
+    UIApplication * app = [UIApplication sharedApplication];
+    
+    MKDSlideViewControllerPositionType position = self.slidePosition;
+    CGFloat xOffset = self.mainPanelView.frame.origin.x;
+    CGFloat snapThreshold = self.overlapWidth;
+    
+    CGFloat dividerPosition = 0.0f;
+    
+    if( position == MKDSlideViewControllerPositionCenter )
+    {
+        if( (xOffset >= (dividerPosition-snapThreshold)) && (xOffset <= (dividerPosition+snapThreshold)) )
+        {
+            // Snap to center position
+            [self showMainViewControllerAnimated:YES];
+            if( [self isHandlingStatusBarStyleChanges] )
+                [app setStatusBarStyle:self.mainStatusBarStyle animated:YES];
+        }
+        else if( xOffset < (dividerPosition-snapThreshold) )
+        {
+            // snap to right position
+            [self showRightViewControllerAnimated:YES];
+            if( [self isHandlingStatusBarStyleChanges] )
+                [app setStatusBarStyle:self.rightStatusBarStyle animated:YES];
+        }
+        else
+        {
+            // snap to left position
+            [self showLeftViewControllerAnimated:YES];
+            if( [self isHandlingStatusBarStyleChanges] )
+                [app setStatusBarStyle:self.leftStatusBarStyle animated:YES];
+        }
+
+    }
+    else if( position == MKDSlideViewControllerPositionLeft )
+    {
+        dividerPosition = self.view.bounds.size.width - self.overlapWidth;
+        
+        if( (xOffset >= (dividerPosition-snapThreshold)) && (xOffset <= (dividerPosition+snapThreshold)) )
+        {
+            // Snap back to left position
+            [self showLeftViewControllerAnimated:YES];
+            if( [self isHandlingStatusBarStyleChanges] )
+                [app setStatusBarStyle:self.leftStatusBarStyle animated:YES];
+        }
+        else if( xOffset < (dividerPosition-snapThreshold) )
+        {
+            // snap to center position
+            [self showMainViewControllerAnimated:YES];
+            if( [self isHandlingStatusBarStyleChanges] )
+                [app setStatusBarStyle:self.mainStatusBarStyle animated:YES];
+        }
+        
+    }
+    else if( position == MKDSlideViewControllerPositionRight )
+    {
+        dividerPosition = self.overlapWidth;
+        CGFloat rightSideX = xOffset+self.mainPanelView.frame.size.width;
+        
+        if( (rightSideX <= dividerPosition) && (rightSideX < (dividerPosition+snapThreshold)) ) // FIXME: Is a bit buggy.
+        {
+            // snap to right position
+            [self showRightViewControllerAnimated:YES];
+            if( [self isHandlingStatusBarStyleChanges] )
+                [app setStatusBarStyle:self.rightStatusBarStyle animated:YES];
+        }
+        else
+        {
+            // snap to center position
+            [self showMainViewControllerAnimated:YES];
+            if( [self isHandlingStatusBarStyleChanges] )
+                [app setStatusBarStyle:self.mainStatusBarStyle animated:YES];
+        }
+        
+    }
+    
+    self.previousLocationInView = CGPointZero;
+}
+
+#pragma mark - Tap Overlay View Handling
+
+- (UIView *)tapOverlayView
+{
+    if( _tapOverlayView == nil )
+    {
+        _tapOverlayView = [[UIView alloc] initWithFrame:self.view.bounds];
+        _tapOverlayView.backgroundColor = [UIColor clearColor];
+        _tapOverlayView.autoresizingMask = UIViewAutoresizingFlexibleWidth|UIViewAutoresizingFlexibleHeight;
+        
+        UITapGestureRecognizer * tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(showMainViewController)];
+        tapGesture.numberOfTapsRequired = 1;
+        tapGesture.numberOfTouchesRequired = 1;
+        [_tapOverlayView addGestureRecognizer:tapGesture];
+        [tapGesture release];
+    }
+    return _tapOverlayView;
+}
 
 - (void)addTapViewOverlay
 {
-    if( self.mainTapView == nil )
-    {
-        _mainTapView = [[UIView alloc] initWithFrame:self.mainViewController.view.bounds];
-        self.mainTapView.backgroundColor = [UIColor clearColor];
-        
-        // Tap Gesture
-        UITapGestureRecognizer * tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(showMainViewController:)];
-        tap.numberOfTapsRequired = 1;
-        tap.numberOfTouchesRequired = 1;
-        
-        [self.mainTapView addGestureRecognizer:tap];
-        [tap release];
-        
-        // Pan Gesture
-        [self setupPanGestureForView:self.mainTapView];
-    }
-    else
-        self.mainTapView.frame = self.mainViewController.view.bounds;
-    
-    [self.mainViewController.view addSubview:self.mainTapView];
+    [self.mainPanelView addSubview:self.tapOverlayView];
 }
 
 - (void)removeTapViewOverlay
 {
-    if( self.mainTapView != nil )
-        [self.mainTapView removeFromSuperview];
+    [self.tapOverlayView removeFromSuperview];
 }
 
 #pragma mark - Slide Actions
 
-- (IBAction)showLeftViewController:(id)sender
+- (void)showLeftViewController
 {
-    [self.view sendSubviewToBack:self.rightViewController.view];
-    
-    [UIView animateWithDuration:kSlideSpeed animations:^{
-        CGRect theFrame = self.mainViewController.view.frame;
-        theFrame.origin.x = theFrame.size.width - kSlideOverlapWidth;
-        self.mainViewController.view.frame = theFrame;
-    } completion:^(BOOL finished) {
-        [self addTapViewOverlay];
-    }];
+    [self showLeftViewControllerAnimated:YES];
 }
 
-- (IBAction)showRightViewController:(id)sender
+- (void)showLeftViewControllerAnimated:(BOOL)animated
 {
-    [self.view sendSubviewToBack:self.leftViewController.view];  // FIXME: Correct timing, when sending to back
+    self.slidePosition = MKDSlideViewControllerPositionLeft;
     
-    [UIView animateWithDuration:kSlideSpeed animations:^{
-        CGRect theFrame = self.mainViewController.view.frame;
-        theFrame.origin.x = -theFrame.size.width + kSlideOverlapWidth;
-        self.mainViewController.view.frame = theFrame;
-    } completion:^(BOOL finished) {
-        [self addTapViewOverlay];
-    }];
-}
-
-- (IBAction)showMainViewController:(id)sender
-{
-    if( self.mainViewController.view.frame.origin.x != CGPointZero.x )
+    if( [self.delegate respondsToSelector:@selector(slideViewController:willSlideToViewController:)] )
+        [self.delegate performSelector:@selector(slideViewController:willSlideToViewController:) withObject:self withObject:self.leftViewController];
+    
+    if( [self isHandlingStatusBarStyleChanges] )
+        [[UIApplication sharedApplication] setStatusBarStyle:self.leftStatusBarStyle animated:YES];
+    
+    [self.view sendSubviewToBack:self.rightPanelView];
+    
+    if( animated )
     {
-        [UIView animateWithDuration:kSlideSpeed animations:^{
-            CGRect theFrame = self.mainViewController.view.frame;
-            theFrame.origin = CGPointZero;
-            self.mainViewController.view.frame = theFrame;
+        [UIView animateWithDuration:self.slideSpeed animations:^{
+            CGRect theFrame = self.mainPanelView.frame;
+            theFrame.origin.x = theFrame.size.width - self.overlapWidth;
+            self.mainPanelView.frame = theFrame;
         } completion:^(BOOL finished) {
-            [self removeTapViewOverlay];
+            [self addTapViewOverlay];
+            
+            if( [self.delegate respondsToSelector:@selector(slideViewController:didSlideToViewController:)] )
+                [self.delegate performSelector:@selector(slideViewController:didSlideToViewController:) withObject:self withObject:self.leftViewController];
         }];
+    }
+    else
+    {
+        CGRect theFrame = self.mainPanelView.frame;
+        theFrame.origin.x = theFrame.size.width - self.overlapWidth;
+        self.mainPanelView.frame = theFrame;
+        [self addTapViewOverlay];
+        
+        if( [self.delegate respondsToSelector:@selector(slideViewController:didSlideToViewController:)] )
+            [self.delegate performSelector:@selector(slideViewController:didSlideToViewController:) withObject:self withObject:self.leftViewController];
+    }
+
+}
+
+- (void)showRightViewController
+{
+    [self showRightViewControllerAnimated:YES];
+}
+
+- (void)showRightViewControllerAnimated:(BOOL)animated
+{
+    self.slidePosition = MKDSlideViewControllerPositionRight;
+    
+    if( [self.delegate respondsToSelector:@selector(slideViewController:willSlideToViewController:)] )
+        [self.delegate performSelector:@selector(slideViewController:willSlideToViewController:) withObject:self withObject:self.rightViewController];
+    
+    if( [self isHandlingStatusBarStyleChanges] )
+        [[UIApplication sharedApplication] setStatusBarStyle:self.rightStatusBarStyle animated:YES];
+    
+    [self.view sendSubviewToBack:self.leftPanelView];
+    
+    if( animated )
+    {
+        [UIView animateWithDuration:self.slideSpeed animations:^{
+            CGRect theFrame = self.mainPanelView.frame;
+            theFrame.origin.x = -theFrame.size.width + self.overlapWidth;
+            self.mainPanelView.frame = theFrame;
+        } completion:^(BOOL finished) {
+            [self addTapViewOverlay];
+            
+            if( [self.delegate respondsToSelector:@selector(slideViewController:didSlideToViewController:)] )
+                [self.delegate performSelector:@selector(slideViewController:didSlideToViewController:) withObject:self withObject:self.rightViewController];
+        }];
+    }
+    else
+    {
+        CGRect theFrame = self.mainPanelView.frame;
+        theFrame.origin.x = -theFrame.size.width + self.overlapWidth;
+        self.mainPanelView.frame = theFrame;
+        [self addTapViewOverlay];
+        
+        if( [self.delegate respondsToSelector:@selector(slideViewController:didSlideToViewController:)] )
+            [self.delegate performSelector:@selector(slideViewController:didSlideToViewController:) withObject:self withObject:self.rightViewController];
+    }
+
+}
+
+- (void)showMainViewController
+{
+    [self showMainViewControllerAnimated:YES];
+}
+
+- (void)showMainViewControllerAnimated:(BOOL)animated
+{
+    self.slidePosition = MKDSlideViewControllerPositionCenter;
+    
+    if( [self isHandlingStatusBarStyleChanges] )
+        [[UIApplication sharedApplication] setStatusBarStyle:self.mainStatusBarStyle animated:YES];
+    
+    if( self.mainPanelView.frame.origin.x != CGPointZero.x )
+    {
+        if( [self.delegate respondsToSelector:@selector(slideViewController:willSlideToViewController:)] )
+            [self.delegate performSelector:@selector(slideViewController:willSlideToViewController:) withObject:self withObject:self.mainViewController];
+        
+        if( animated )
+        {
+            [UIView animateWithDuration:self.slideSpeed animations:^{
+                CGRect theFrame = self.mainPanelView.frame;
+                theFrame.origin = CGPointZero;
+                self.mainPanelView.frame = theFrame;
+            } completion:^(BOOL finished) {
+                [self removeTapViewOverlay];
+                
+                if( [self.delegate respondsToSelector:@selector(slideViewController:didSlideToViewController:)] )
+                    [self.delegate performSelector:@selector(slideViewController:didSlideToViewController:) withObject:self withObject:self.mainViewController];
+            }];
+        }
+        else
+        {
+            CGRect theFrame = self.mainPanelView.frame;
+            theFrame.origin = CGPointZero;
+            self.mainPanelView.frame = theFrame;
+            [self removeTapViewOverlay];
+            
+            if( [self.delegate respondsToSelector:@selector(slideViewController:didSlideToViewController:)] )
+                [self.delegate performSelector:@selector(slideViewController:didSlideToViewController:) withObject:self withObject:self.mainViewController];
+        }
         
     }
 }
-
-#pragma mark - Container View Controller
-
-/* // No need for override
-- (BOOL)automaticallyForwardAppearanceAndRotationMethodsToChildViewControllers
-{
-    return [super automaticallyForwardAppearanceAndRotationMethodsToChildViewControllers];
-}
-
-- (void)addChildViewController:(UIViewController *)childController
-{
-    [super addChildViewController:childController];
-}
-
-- (void)removeFromParentViewController
-{
-    [super removeFromParentViewController];
-}
-
-- (void)willMoveToParentViewController:(UIViewController *)parent
-{
-    [super willMoveToParentViewController:parent];
-}
-
-- (void)didMoveToParentViewController:(UIViewController *)parent
-{
-    [super didMoveToParentViewController:parent];
-}
-*/
 
 @end

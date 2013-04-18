@@ -1,97 +1,49 @@
 //
-//  ViewController.m
+//  LeftViewController.m
 //  MKDSlideViewController
 //
-//  Created by Marcel Dierkes on 03.12.11.
-//  Copyright (c) 2011 __MyCompanyName__. All rights reserved.
+//  Created by Marcel Dierkes on 18.04.13.
+//
 //
 
 #import "LeftViewController.h"
-#import "MainViewController.h"
-#import "AppDelegate.h"
 #import "MKDSlideViewController.h"
+#import "UIViewController+MKDSlideViewController.h"
+#import "MainViewController.h"
+#import "SecondaryViewController.h"
 
 @implementation LeftViewController
 
-@synthesize mainViewController = _mainViewController;
+#pragma mark - Table view delegate
 
-- (void)didReceiveMemoryWarning
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    [super didReceiveMemoryWarning];
-    // Release any cached data, images, etc that aren't in use.
-}
-
-#pragma mark - View lifecycle
-
-- (void)viewDidLoad
-{
-    [super viewDidLoad];
-	// Do any additional setup after loading the view, typically from a nib.
-}
-
-- (void)viewDidUnload
-{
-    [super viewDidUnload];
-    // Release any retained subviews of the main view.
-    // e.g. self.myOutlet = nil;
-    self.mainViewController = nil;
-}
-
-- (void)viewWillAppear:(BOOL)animated
-{
-    [super viewWillAppear:animated];
-}
-
-- (void)viewDidAppear:(BOOL)animated
-{
-    [super viewDidAppear:animated];
-}
-
-- (void)viewWillDisappear:(BOOL)animated
-{
-	[super viewWillDisappear:animated];
-}
-
-- (void)viewDidDisappear:(BOOL)animated
-{
-	[super viewDidDisappear:animated];
-}
-
-- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
-{
-    // Return YES for supported orientations
-    if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone) {
-        return (interfaceOrientation != UIInterfaceOrientationPortraitUpsideDown);
-    } else {
-        return YES;
-    }
-}
-
-#pragma mark -
-
-- (IBAction)changeText:(id)sender
-{
-    MainViewController * main = (MainViewController *)self.mainViewController;
-    if( self.mainViewController )
+    NSUInteger row = [indexPath row];
+    
+    UINavigationController * centerNavigationController = (UINavigationController *)self.navigationController.slideViewController.mainViewController;
+    
+    if( row == 0 )
     {
-        [main setDetailText:@"Pressed a button…"];
+        if( [centerNavigationController.topViewController isKindOfClass:[MainViewController class]] )
+            [self.navigationController.slideViewController showMainViewControllerAnimated:YES];
+        else
+        {
+            UIViewController * mainViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"MainViewController"];
+            [self.navigationController.slideViewController setMainViewController:mainViewController animated:YES];
+        }
     }
-}
-
-- (IBAction)navigateToMainViewController:(id)sender
-{
-    // Use the application delegate to interact with the Slide View Controller
-    AppDelegate * appDelegate = [[UIApplication sharedApplication] delegate];
-    MKDSlideViewController * slideViewController = appDelegate.slideViewController;
-    [slideViewController showMainViewController:self];
-}
-
-- (IBAction)navigateToRightViewController:(id)sender
-{
-    // Use the application delegate to interact with the Slide View Controller
-    AppDelegate * appDelegate = [[UIApplication sharedApplication] delegate];
-    MKDSlideViewController * slideViewController = appDelegate.slideViewController;
-    [slideViewController showRightViewController:self];
+    else if( row == 1 )
+    {
+        if( [centerNavigationController.topViewController isKindOfClass:[SecondaryViewController class]] )
+            [self.navigationController.slideViewController showMainViewControllerAnimated:YES];
+        else
+        {
+            UIViewController * secondaryViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"SecondaryViewController"];
+            [self.navigationController.slideViewController setMainViewController:secondaryViewController animated:YES];
+        }
+    }
+    
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
 
 @end

@@ -2,12 +2,12 @@
 //  RightViewController.h
 //  MKDSlideViewController
 //
-//  Created by Marcel Dierkes on 04.12.11.
-//  Copyright (c) 2011 __MyCompanyName__. All rights reserved.
+//  Created by Marcel Dierkes on 18.04.13.
+//
 //
 
 #import <UIKit/UIKit.h>
 
-@interface RightViewController : UIViewController
+@interface RightViewController : UITableViewController
 
 @end

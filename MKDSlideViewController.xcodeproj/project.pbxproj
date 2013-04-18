@@ -7,32 +7,28 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		DA330126148C1F0200E6DDA4 /* ButtonMenu.png in Resources */ = {isa = PBXBuildFile; fileRef = DA330124148C1F0200E6DDA4 /* ButtonMenu.png */; };
-		DA330127148C1F0200E6DDA4 /* ButtonMenu@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DA330125148C1F0200E6DDA4 /* ButtonMenu@2x.png */; };
-		DA330129148C21A600E6DDA4 /* LeftViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = DA33012A148C21A600E6DDA4 /* LeftViewController.xib */; };
-		DA63576E148BAC3400464E51 /* RightViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DA63576B148BAC3400464E51 /* RightViewController.m */; };
-		DA63576F148BAC3400464E51 /* RightViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = DA63576C148BAC3400464E51 /* RightViewController.xib */; };
 		DA953C65148AD3700075A1E2 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DA953C64148AD3700075A1E2 /* UIKit.framework */; };
 		DA953C67148AD3700075A1E2 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DA953C66148AD3700075A1E2 /* Foundation.framework */; };
 		DA953C69148AD3700075A1E2 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DA953C68148AD3700075A1E2 /* CoreGraphics.framework */; };
 		DA953C71148AD3700075A1E2 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = DA953C70148AD3700075A1E2 /* main.m */; };
 		DA953C75148AD3700075A1E2 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = DA953C74148AD3700075A1E2 /* AppDelegate.m */; };
-		DA953C78148AD3700075A1E2 /* LeftViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DA953C77148AD3700075A1E2 /* LeftViewController.m */; };
 		DA953C8C148AD61E0075A1E2 /* MKDSlideViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DA953C8B148AD61E0075A1E2 /* MKDSlideViewController.m */; };
 		DA953C90148ADA440075A1E2 /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DA953C8E148ADA440075A1E2 /* MainViewController.m */; };
-		DA953C91148ADA440075A1E2 /* MainViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = DA953C8F148ADA440075A1E2 /* MainViewController.xib */; };
-		DA953C9B148AE6180075A1E2 /* SecondLevelViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DA953C99148AE6180075A1E2 /* SecondLevelViewController.m */; };
-		DA953C9C148AE6180075A1E2 /* SecondLevelViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = DA953C9A148AE6180075A1E2 /* SecondLevelViewController.xib */; };
 		DA953C9E148AE7240075A1E2 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DA953C9D148AE7240075A1E2 /* QuartzCore.framework */; };
+		DAD0C3CD1720792F0031B4E0 /* SecondaryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DAD0C3CC1720792F0031B4E0 /* SecondaryViewController.m */; };
+		DAD0C3D0172079390031B4E0 /* LeftViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DAD0C3CF172079390031B4E0 /* LeftViewController.m */; };
+		DAD0C3D317207A2C0031B4E0 /* RightViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DAD0C3D217207A2C0031B4E0 /* RightViewController.m */; };
+		DAD0C3DD1720872D0031B4E0 /* ButtonMenu.png in Resources */ = {isa = PBXBuildFile; fileRef = DAD0C3D51720872D0031B4E0 /* ButtonMenu.png */; };
+		DAD0C3DE1720872D0031B4E0 /* ButtonMenu@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DAD0C3D61720872D0031B4E0 /* ButtonMenu@2x.png */; };
+		DAD0C3DF1720872D0031B4E0 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DAD0C3D71720872D0031B4E0 /* Default-568h@2x.png */; };
+		DAD0C3E01720872D0031B4E0 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = DAD0C3D81720872D0031B4E0 /* Default.png */; };
+		DAD0C3E11720872D0031B4E0 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DAD0C3D91720872D0031B4E0 /* Default@2x.png */; };
+		DAD0C3E6172088010031B4E0 /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = DAD0C3E5172088010031B4E0 /* Icon.png */; };
+		DAF5A79D171D45F8007D143C /* Storyboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DAF5A79C171D45F8007D143C /* Storyboard.storyboard */; };
+		DAF5A7A0171D537E007D143C /* UIViewController+MKDSlideViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DAF5A79F171D537E007D143C /* UIViewController+MKDSlideViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		DA330124148C1F0200E6DDA4 /* ButtonMenu.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = ButtonMenu.png; path = Images/ButtonMenu.png; sourceTree = SOURCE_ROOT; };
-		DA330125148C1F0200E6DDA4 /* ButtonMenu@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "ButtonMenu@2x.png"; path = "Images/ButtonMenu@2x.png"; sourceTree = SOURCE_ROOT; };
-		DA33012A148C21A600E6DDA4 /* LeftViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LeftViewController.xib; sourceTree = "<group>"; };
-		DA63576A148BAC3400464E51 /* RightViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.objj.h; path = RightViewController.h; sourceTree = "<group>"; };
-		DA63576B148BAC3400464E51 /* RightViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RightViewController.m; sourceTree = "<group>"; };
-		DA63576C148BAC3400464E51 /* RightViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RightViewController.xib; sourceTree = "<group>"; };
 		DA953C60148AD3700075A1E2 /* MKDSlideViewController.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MKDSlideViewController.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DA953C64148AD3700075A1E2 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		DA953C66148AD3700075A1E2 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -42,17 +38,26 @@
 		DA953C72148AD3700075A1E2 /* MKDSlideViewController-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "MKDSlideViewController-Prefix.pch"; sourceTree = "<group>"; };
 		DA953C73148AD3700075A1E2 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		DA953C74148AD3700075A1E2 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		DA953C76148AD3700075A1E2 /* LeftViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.objj.h; path = LeftViewController.h; sourceTree = "<group>"; };
-		DA953C77148AD3700075A1E2 /* LeftViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LeftViewController.m; sourceTree = "<group>"; };
 		DA953C8A148AD61E0075A1E2 /* MKDSlideViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MKDSlideViewController.h; sourceTree = "<group>"; };
 		DA953C8B148AD61E0075A1E2 /* MKDSlideViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MKDSlideViewController.m; sourceTree = "<group>"; };
 		DA953C8D148ADA440075A1E2 /* MainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainViewController.h; sourceTree = "<group>"; };
 		DA953C8E148ADA440075A1E2 /* MainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainViewController.m; sourceTree = "<group>"; };
-		DA953C8F148ADA440075A1E2 /* MainViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MainViewController.xib; sourceTree = "<group>"; };
-		DA953C98148AE6180075A1E2 /* SecondLevelViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SecondLevelViewController.h; sourceTree = "<group>"; };
-		DA953C99148AE6180075A1E2 /* SecondLevelViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SecondLevelViewController.m; sourceTree = "<group>"; };
-		DA953C9A148AE6180075A1E2 /* SecondLevelViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SecondLevelViewController.xib; sourceTree = "<group>"; };
 		DA953C9D148AE7240075A1E2 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		DAD0C3CB1720792F0031B4E0 /* SecondaryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SecondaryViewController.h; sourceTree = "<group>"; };
+		DAD0C3CC1720792F0031B4E0 /* SecondaryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SecondaryViewController.m; sourceTree = "<group>"; };
+		DAD0C3CE172079390031B4E0 /* LeftViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LeftViewController.h; sourceTree = "<group>"; };
+		DAD0C3CF172079390031B4E0 /* LeftViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LeftViewController.m; sourceTree = "<group>"; };
+		DAD0C3D117207A2C0031B4E0 /* RightViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RightViewController.h; sourceTree = "<group>"; };
+		DAD0C3D217207A2C0031B4E0 /* RightViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RightViewController.m; sourceTree = "<group>"; };
+		DAD0C3D51720872D0031B4E0 /* ButtonMenu.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ButtonMenu.png; sourceTree = "<group>"; };
+		DAD0C3D61720872D0031B4E0 /* ButtonMenu@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ButtonMenu@2x.png"; sourceTree = "<group>"; };
+		DAD0C3D71720872D0031B4E0 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
+		DAD0C3D81720872D0031B4E0 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
+		DAD0C3D91720872D0031B4E0 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
+		DAD0C3E5172088010031B4E0 /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon.png; sourceTree = SOURCE_ROOT; };
+		DAF5A79C171D45F8007D143C /* Storyboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Storyboard.storyboard; sourceTree = "<group>"; };
+		DAF5A79E171D537E007D143C /* UIViewController+MKDSlideViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+MKDSlideViewController.h"; sourceTree = "<group>"; };
+		DAF5A79F171D537E007D143C /* UIViewController+MKDSlideViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+MKDSlideViewController.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -70,15 +75,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		DA330128148C206700E6DDA4 /* Images */ = {
-			isa = PBXGroup;
-			children = (
-				DA330124148C1F0200E6DDA4 /* ButtonMenu.png */,
-				DA330125148C1F0200E6DDA4 /* ButtonMenu@2x.png */,
-			);
-			name = Images;
-			sourceTree = "<group>";
-		};
 		DA953C55148AD36F0075A1E2 = {
 			isa = PBXGroup;
 			children = (
@@ -111,9 +107,11 @@
 		DA953C6A148AD3700075A1E2 /* Example Project */ = {
 			isa = PBXGroup;
 			children = (
+				DAF5A79C171D45F8007D143C /* Storyboard.storyboard */,
 				DA953C73148AD3700075A1E2 /* AppDelegate.h */,
 				DA953C74148AD3700075A1E2 /* AppDelegate.m */,
 				DA953C92148ADA4A0075A1E2 /* View Controllers */,
+				DAD0C3D41720872D0031B4E0 /* Resources */,
 				DA953C6B148AD3700075A1E2 /* Supporting Files */,
 			);
 			name = "Example Project";
@@ -135,7 +133,8 @@
 			children = (
 				DA953C8A148AD61E0075A1E2 /* MKDSlideViewController.h */,
 				DA953C8B148AD61E0075A1E2 /* MKDSlideViewController.m */,
-				DA330128148C206700E6DDA4 /* Images */,
+				DAF5A79E171D537E007D143C /* UIViewController+MKDSlideViewController.h */,
+				DAF5A79F171D537E007D143C /* UIViewController+MKDSlideViewController.m */,
 			);
 			name = "Slide View Controller";
 			sourceTree = "<group>";
@@ -145,18 +144,27 @@
 			children = (
 				DA953C8D148ADA440075A1E2 /* MainViewController.h */,
 				DA953C8E148ADA440075A1E2 /* MainViewController.m */,
-				DA953C8F148ADA440075A1E2 /* MainViewController.xib */,
-				DA953C98148AE6180075A1E2 /* SecondLevelViewController.h */,
-				DA953C99148AE6180075A1E2 /* SecondLevelViewController.m */,
-				DA953C9A148AE6180075A1E2 /* SecondLevelViewController.xib */,
-				DA953C76148AD3700075A1E2 /* LeftViewController.h */,
-				DA953C77148AD3700075A1E2 /* LeftViewController.m */,
-				DA33012A148C21A600E6DDA4 /* LeftViewController.xib */,
-				DA63576A148BAC3400464E51 /* RightViewController.h */,
-				DA63576B148BAC3400464E51 /* RightViewController.m */,
-				DA63576C148BAC3400464E51 /* RightViewController.xib */,
+				DAD0C3CB1720792F0031B4E0 /* SecondaryViewController.h */,
+				DAD0C3CC1720792F0031B4E0 /* SecondaryViewController.m */,
+				DAD0C3CE172079390031B4E0 /* LeftViewController.h */,
+				DAD0C3CF172079390031B4E0 /* LeftViewController.m */,
+				DAD0C3D117207A2C0031B4E0 /* RightViewController.h */,
+				DAD0C3D217207A2C0031B4E0 /* RightViewController.m */,
 			);
 			name = "View Controllers";
+			sourceTree = "<group>";
+		};
+		DAD0C3D41720872D0031B4E0 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				DAD0C3D81720872D0031B4E0 /* Default.png */,
+				DAD0C3D91720872D0031B4E0 /* Default@2x.png */,
+				DAD0C3D71720872D0031B4E0 /* Default-568h@2x.png */,
+				DAD0C3D51720872D0031B4E0 /* ButtonMenu.png */,
+				DAD0C3D61720872D0031B4E0 /* ButtonMenu@2x.png */,
+				DAD0C3E5172088010031B4E0 /* Icon.png */,
+			);
+			path = Resources;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -185,7 +193,7 @@
 		DA953C57148AD36F0075A1E2 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0420;
+				LastUpgradeCheck = 0460;
 			};
 			buildConfigurationList = DA953C5A148AD36F0075A1E2 /* Build configuration list for PBXProject "MKDSlideViewController" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -209,12 +217,13 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DA330129148C21A600E6DDA4 /* LeftViewController.xib in Resources */,
-				DA953C91148ADA440075A1E2 /* MainViewController.xib in Resources */,
-				DA953C9C148AE6180075A1E2 /* SecondLevelViewController.xib in Resources */,
-				DA63576F148BAC3400464E51 /* RightViewController.xib in Resources */,
-				DA330126148C1F0200E6DDA4 /* ButtonMenu.png in Resources */,
-				DA330127148C1F0200E6DDA4 /* ButtonMenu@2x.png in Resources */,
+				DAF5A79D171D45F8007D143C /* Storyboard.storyboard in Resources */,
+				DAD0C3DD1720872D0031B4E0 /* ButtonMenu.png in Resources */,
+				DAD0C3DE1720872D0031B4E0 /* ButtonMenu@2x.png in Resources */,
+				DAD0C3DF1720872D0031B4E0 /* Default-568h@2x.png in Resources */,
+				DAD0C3E01720872D0031B4E0 /* Default.png in Resources */,
+				DAD0C3E11720872D0031B4E0 /* Default@2x.png in Resources */,
+				DAD0C3E6172088010031B4E0 /* Icon.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -227,11 +236,12 @@
 			files = (
 				DA953C71148AD3700075A1E2 /* main.m in Sources */,
 				DA953C75148AD3700075A1E2 /* AppDelegate.m in Sources */,
-				DA953C78148AD3700075A1E2 /* LeftViewController.m in Sources */,
 				DA953C8C148AD61E0075A1E2 /* MKDSlideViewController.m in Sources */,
 				DA953C90148ADA440075A1E2 /* MainViewController.m in Sources */,
-				DA953C9B148AE6180075A1E2 /* SecondLevelViewController.m in Sources */,
-				DA63576E148BAC3400464E51 /* RightViewController.m in Sources */,
+				DAF5A7A0171D537E007D143C /* UIViewController+MKDSlideViewController.m in Sources */,
+				DAD0C3CD1720792F0031B4E0 /* SecondaryViewController.m in Sources */,
+				DAD0C3D0172079390031B4E0 /* LeftViewController.m in Sources */,
+				DAD0C3D317207A2C0031B4E0 /* RightViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -243,6 +253,10 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -256,6 +270,7 @@
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				SDKROOT = iphoneos;
@@ -268,12 +283,17 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
@@ -290,6 +310,7 @@
 				GCC_PREFIX_HEADER = "ExampleProject/MKDSlideViewController-Prefix.pch";
 				INFOPLIST_FILE = "ExampleProject/MKDSlideViewController-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -301,6 +322,7 @@
 				GCC_PREFIX_HEADER = "ExampleProject/MKDSlideViewController-Prefix.pch";
 				INFOPLIST_FILE = "ExampleProject/MKDSlideViewController-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
