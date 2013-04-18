@@ -35,11 +35,11 @@ This project doesn't use ARC. If your project is ARC-enabled, add `-fno-objc-arc
 
 ## Screenshots ##
 
-![Screenshot 1](https://github.com/newmarcel/MKDSlideViewController/raw/master/Screenshot-1.png)
+![Screenshot 1](https://raw.github.com/newmarcel/MKDSlideViewController/master/ExampleProject/Resources/Screenshot-1.png)
 
-![Screenshot 2](https://github.com/newmarcel/MKDSlideViewController/raw/master/Screenshot-2.png)
+![Screenshot 2](https://raw.github.com/newmarcel/MKDSlideViewController/master/ExampleProject/Resources/Screenshot-2.png)
 
-![Screenshot 3](https://github.com/newmarcel/MKDSlideViewController/raw/master/Screenshot-3.png)
+![Screenshot 3](https://raw.github.com/newmarcel/MKDSlideViewController/master/ExampleProject/Resources/Screenshot-3.png)
 
 
 
