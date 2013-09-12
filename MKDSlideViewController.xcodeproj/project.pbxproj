@@ -24,6 +24,8 @@
 		DAD0C3E01720872D0031B4E0 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = DAD0C3D81720872D0031B4E0 /* Default.png */; };
 		DAD0C3E11720872D0031B4E0 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DAD0C3D91720872D0031B4E0 /* Default@2x.png */; };
 		DAD0C3E6172088010031B4E0 /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = DAD0C3E5172088010031B4E0 /* Icon.png */; };
+		DAF27D9417E1C86400AA3CDB /* ButtonMenuTemplate.png in Resources */ = {isa = PBXBuildFile; fileRef = DAF27D9217E1C86400AA3CDB /* ButtonMenuTemplate.png */; };
+		DAF27D9517E1C86400AA3CDB /* ButtonMenuTemplate@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DAF27D9317E1C86400AA3CDB /* ButtonMenuTemplate@2x.png */; };
 		DAF5A79D171D45F8007D143C /* Storyboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DAF5A79C171D45F8007D143C /* Storyboard.storyboard */; };
 		DAF5A7A0171D537E007D143C /* UIViewController+MKDSlideViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DAF5A79F171D537E007D143C /* UIViewController+MKDSlideViewController.m */; };
 /* End PBXBuildFile section */
@@ -55,6 +57,8 @@
 		DAD0C3D81720872D0031B4E0 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
 		DAD0C3D91720872D0031B4E0 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
 		DAD0C3E5172088010031B4E0 /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon.png; sourceTree = SOURCE_ROOT; };
+		DAF27D9217E1C86400AA3CDB /* ButtonMenuTemplate.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ButtonMenuTemplate.png; sourceTree = "<group>"; };
+		DAF27D9317E1C86400AA3CDB /* ButtonMenuTemplate@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ButtonMenuTemplate@2x.png"; sourceTree = "<group>"; };
 		DAF5A79C171D45F8007D143C /* Storyboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Storyboard.storyboard; sourceTree = "<group>"; };
 		DAF5A79E171D537E007D143C /* UIViewController+MKDSlideViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+MKDSlideViewController.h"; sourceTree = "<group>"; };
 		DAF5A79F171D537E007D143C /* UIViewController+MKDSlideViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+MKDSlideViewController.m"; sourceTree = "<group>"; };
@@ -162,6 +166,8 @@
 				DAD0C3D71720872D0031B4E0 /* Default-568h@2x.png */,
 				DAD0C3D51720872D0031B4E0 /* ButtonMenu.png */,
 				DAD0C3D61720872D0031B4E0 /* ButtonMenu@2x.png */,
+				DAF27D9217E1C86400AA3CDB /* ButtonMenuTemplate.png */,
+				DAF27D9317E1C86400AA3CDB /* ButtonMenuTemplate@2x.png */,
 				DAD0C3E5172088010031B4E0 /* Icon.png */,
 			);
 			path = Resources;
@@ -193,7 +199,7 @@
 		DA953C57148AD36F0075A1E2 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0460;
+				LastUpgradeCheck = 0500;
 			};
 			buildConfigurationList = DA953C5A148AD36F0075A1E2 /* Build configuration list for PBXProject "MKDSlideViewController" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -220,9 +226,11 @@
 				DAF5A79D171D45F8007D143C /* Storyboard.storyboard in Resources */,
 				DAD0C3DD1720872D0031B4E0 /* ButtonMenu.png in Resources */,
 				DAD0C3DE1720872D0031B4E0 /* ButtonMenu@2x.png in Resources */,
+				DAF27D9417E1C86400AA3CDB /* ButtonMenuTemplate.png in Resources */,
 				DAD0C3DF1720872D0031B4E0 /* Default-568h@2x.png in Resources */,
 				DAD0C3E01720872D0031B4E0 /* Default.png in Resources */,
 				DAD0C3E11720872D0031B4E0 /* Default@2x.png in Resources */,
+				DAF27D9517E1C86400AA3CDB /* ButtonMenuTemplate@2x.png in Resources */,
 				DAD0C3E6172088010031B4E0 /* Icon.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -252,8 +260,9 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -268,11 +277,15 @@
 				);
 				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -282,8 +295,9 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -291,9 +305,12 @@
 				COPY_PHASE_STRIP = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";

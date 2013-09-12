@@ -19,7 +19,13 @@
     [super viewDidLoad];
     
     // You are now responsible for your own menu button
-    UIBarButtonItem * menuItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"ButtonMenu"]
+    NSString * buttonName = nil;
+    if( [[[UIDevice currentDevice] systemVersion] floatValue] < 7.0f )
+        buttonName = @"ButtonMenu";
+    else
+        buttonName = @"ButtonMenuTemplate";
+    
+    UIBarButtonItem * menuItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:buttonName]
                                                                   style:UIBarButtonItemStyleBordered
                                                                  target:self
                                                                  action:@selector(showMenu:)];
